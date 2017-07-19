@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>写入 HTML 输出</title>
+</head>
+<body>
+    <button type="button" onclick="alert('welcome!')">点击我</button>
+    <p id="demo1" onclick="changeStyle()"></p>
+
+    <article>
+        <img src="imgs/eg_bulboff.gif" alt="电灯泡" id="myLight" onclick="changeLight()">
+        <p>点击灯泡来点亮或者熄灭它。</p>
+    </article>
+
+    <article>
+        <input type="text" id="number">
+        <button type="submit" id="sBtn" onclick="isNumber()">submit</button>
+    </article>
+</body>
+<script>
+    document.write('<h1>我是直接通过javascript写入的dom。</h1>');
+    var demo1 = document.getElementById('demo1');
+    demo1.innerHTML = 'La La Land.';
+
+    function changeLight () {
+        var myLight = document.getElementById('myLight');
+        if (myLight.src.match('bulboff')) {
+            myLight.src = 'imgs/eg_bulbon.gif';
+        } else {
+            myLight.src = 'imgs/eg_bulboff.gif';
+        }
+    }
+
+
+    // 改变样式
+    function changeStyle () {
+        var cy = document.getElementById('demo1');
+        cy.style.color = '#f00';
+        cy.style.fontWeight = 'bold';
+    }
+
+    function isNumber () {
+        var isNum = document.getElementById('number').value;
+        try {
+            if (isNum === '' || isNaN(isNum)) {
+                alert('请输入数字');
+            }
+        } catch (err) {
+            var txt = '';
+            txt = '出现了一个错误。\n\n';
+            txt += '错误描述：' + err.message + '\n\n';
+            txt += '点击OK继续。\n\n';
+            alert(txt);
+        }
+
+    }
+
+</script>
+</html>

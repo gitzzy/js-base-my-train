@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS</title>
+</head>
+<body>
+    <div id="js1"></div>
+
+    <form action="#" onsubmit="return v_form(this)">
+        email: <input type="text" name="email" size="30">
+        <input type="submit" value="Submit">
+    </form>
+
+    <div onmouseover="changeText(this)" id="mouse" style="width:300px;height:100px;background-color:green;color:#fff;text-align:center;">
+        把鼠标移到上面
+    </div>
+</body>
+<script>
+    var a = 5,
+        b = 4;
+    var c = a + b;
+    document.getElementById('js1').innerHTML = c;
+
+    function v_required (f, txt) {
+        with (f) {
+            if (value == null || value == '') {
+                alert(txt);
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+    function v_form (thisform) {
+        with (thisform) {
+            if (v_required(email, '邮箱必须填！') === false) {
+                email.focus();
+                return false;
+            }
+        }
+    }
+
+    function changeText(t) {
+        t.innerHTML = '谢谢';
+    }
+
+    var param = document.createElement('p');
+    var node = document.createTextNode('new Text.');
+    param.appendChild(node);
+
+    document.getElementById('js1').appendChild(param);
+
+</script>
+</html>

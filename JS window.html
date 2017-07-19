@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS window</title>
+</head>
+<body>
+<div style="font-weight: bold;font-size: 50px;">
+    浏览器的宽度是<span id="w"></span>，高度是<span id="h"></span>。<br />
+    可用屏幕的宽度：<span id="sw"></span>，高度：<span id="sh"></span>。<br />
+    url: <span id="url" style="font-size: 12px"></span><br />
+    hostname: <span id="hn"></span><br />
+    pathname: <span id="pn"></span><br />
+    port: <span id="pt"></span><br />
+    protocol: <span id="pc"></span>
+</div>
+</body>
+<script>
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+    var bw = document.getElementById('w'),
+        bh = document.getElementById('h');
+
+    bw.innerHTML = w;
+    bh.innerHTML = h;
+
+    var sw = screen.availWidth,
+        sh = screen.availHeight;
+    document.getElementById('sw').innerHTML = sw;
+    document.getElementById('sh').innerHTML = sh;
+
+    $('hn').innerHTML = location.hostname;
+    $('pn').innerHTML = location.pathname;
+    $('pt').innerHTML = location.port;
+    $('pc').innerHTML = location.protocol;
+    $('url').innerHTML = location.href;
+</script>
+</html>
